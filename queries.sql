@@ -20,3 +20,14 @@ WHERE titleType = "movie";
 
 SELECT * FROM Movies;
 
+# Query Three: Join Movies and Ratings together.
+DROP VIEW IF EXISTS MoviesWithRatings;
+CREATE VIEW MoviesWithRatings AS
+SELECT a.tconst as id, primaryTitle, startYear, runtimeMinutes, genres, averageRating, numVotes
+FROM Movies AS a
+INNER JOIN (
+	SELECT *
+    FROM Ratings
+) AS b ON a.tconst = b.tconst;
+
+SELECT * FROM MoviesWithRatings;
