@@ -5,7 +5,7 @@ USE imdb_movies;
 
 
 DROP TABLE IF EXISTS Movies;
-CREATE TABLE Movies(
+CREATE TABLE Media(
 	tconst VARCHAR(100),
     titleType VARCHAR(100),
     primaryTitle VARCHAR(7000),
@@ -14,7 +14,8 @@ CREATE TABLE Movies(
     startYear VARCHAR(100),
     EndYear VARCHAR(100),
     runtimeMinutes INT,
-    genres VARCHAR(300)
+    genres VARCHAR(300),
+	CONSTRAINT PK_Movies PRIMARY KEY(tconst)
 );
 
 
@@ -22,8 +23,10 @@ DROP TABLE IF EXISTS Ratings;
 CREATE TABLE Ratings(
 	tconst VARCHAR(100),
     averageRating FLOAT,
-    numVotes INT
+    numVotes INT,
+    CONSTRAINT FK_Rating FOREIGN KEY(tconst) REFERENCES Media(tconst)
 );
+SET FOREIGN_KEY_CHECKS=0;
 
 LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\ratings.tsv' INTO TABLE Ratings
   FIELDS TERMINATED BY '\t'
@@ -33,10 +36,10 @@ LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\ratings.tsv' INTO TABLE Rati
   
 SELECT * FROM Ratings;
 
-LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\basics.tsv' INTO TABLE Movies
+LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\basics.tsv' INTO TABLE Media
 	FIELDS TERMINATED BY '\t'
 	ENCLOSED BY '"'
 	LINES TERMINATED BY '\n'
 	IGNORE 1 LINES;
 
-SELECT * FROM Movies;
+SELECT * FROM Media;
