@@ -31,3 +31,13 @@ INNER JOIN (
 ) AS b ON a.tconst = b.tconst;
 
 SELECT * FROM MoviesWithRatings;
+
+# Query Four: Incorporate a minimum vote count (100,000 votes) for movies to be included.
+DROP VIEW IF EXISTS MoviesWithRatingsMinimumVoteCount;
+CREATE VIEW MoviesWithRatingsMinimumVoteCount AS
+SELECT *
+FROM MoviesWithRatings
+GROUP BY id
+HAVING numVotes >= 100000;
+
+SELECT * FROM MoviesWithRatingsMinimumVoteCount;
