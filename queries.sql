@@ -56,3 +56,14 @@ ORDER BY averageRating DESC
 LIMIT 10;
 
 SELECT * FROM BestMovies2021;
+
+
+# Query Six: The average rating of movies each year.
+DROP VIEW IF EXISTS AverageMovieRatingByYear;
+CREATE VIEW AverageMovieRatingByYear AS
+SELECT startYear AS year, (SELECT AVG(averageRating) FROM MoviesWithRatingsMinimumVoteCount WHERE startYear = year) as rating
+FROM MoviesWithRatingsMinimumVoteCount
+GROUP BY startYear
+ORDER BY startYear ASC;
+
+SELECT * FROM AverageMovieRatingByYear;
