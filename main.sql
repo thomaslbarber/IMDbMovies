@@ -38,3 +38,5 @@ LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\basics.tsv' INTO TABLE Movie
 	ENCLOSED BY '"'
 	LINES TERMINATED BY '\n'
 	IGNORE 1 LINES;
+
+SELECT * FROM Movies;
