@@ -11,3 +11,12 @@ ORDER BY averageRating DESC;
 
 SELECT * FROM RatingFrequency;
 
+# Query Two: All Movies.
+DROP VIEW IF EXISTS Movies;
+CREATE VIEW Movies AS
+SELECT tconst, primaryTitle, originalTitle, isAdult, startYear, runtimeMinutes, genres
+FROM Media
+WHERE titleType = "movie";
+
+SELECT * FROM Movies;
+
