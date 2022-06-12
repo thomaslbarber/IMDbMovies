@@ -4,7 +4,8 @@ CREATE DATABASE imdb_movies;
 USE imdb_movies;
 
 
-DROP TABLE IF EXISTS Movies;
+# Create table for Media.
+DROP TABLE IF EXISTS Media;
 CREATE TABLE Media(
 	tconst VARCHAR(100),
     titleType VARCHAR(100),
@@ -18,7 +19,7 @@ CREATE TABLE Media(
 	CONSTRAINT PK_Movies PRIMARY KEY(tconst)
 );
 
-
+# Create table for Ratings.
 DROP TABLE IF EXISTS Ratings;
 CREATE TABLE Ratings(
 	tconst VARCHAR(100),
@@ -26,16 +27,12 @@ CREATE TABLE Ratings(
     numVotes INT,
     CONSTRAINT FK_Rating FOREIGN KEY(tconst) REFERENCES Media(tconst)
 );
+
+# Prevent errors occurring due to foreign key issues when importing the data.
 SET FOREIGN_KEY_CHECKS=0;
 
-LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\ratings.tsv' INTO TABLE Ratings
-  FIELDS TERMINATED BY '\t'
-  ENCLOSED BY '"'
-  LINES TERMINATED BY '\n'
-  IGNORE 1 LINES;
-  
-SELECT * FROM Ratings;
-
+# Importing the data:
+# Import the data into the Media table.
 LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\basics.tsv' INTO TABLE Media
 	FIELDS TERMINATED BY '\t'
 	ENCLOSED BY '"'
@@ -43,3 +40,12 @@ LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\basics.tsv' INTO TABLE Media
 	IGNORE 1 LINES;
 
 SELECT * FROM Media;
+
+# Import the data into the Ratings table.
+LOAD DATA INFILE 'D:\Projects\\SQL\\IMDbMoviesTSVs\\ratings.tsv' INTO TABLE Ratings
+  FIELDS TERMINATED BY '\t'
+  ENCLOSED BY '"'
+  LINES TERMINATED BY '\n'
+  IGNORE 1 LINES;
+  
+SELECT * FROM Ratings;
