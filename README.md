@@ -13,8 +13,8 @@ and unzip them into the proper folder, then update the file paths appropriately 
 
 ### Example Outputs
 Below are some examples of queries and their outputs.
-- Frequency of each rating (i.e., 0.33% of content on IMDb has a 10 star rating:   
-![Image failed to display.](imgs/AverageRatings.PNG)
-
 - The most popular movies from 2021 (where movies must have passed a minimum threshold of 100,000 votes to be included):  
 ![Image failed to display.](imgs/Top10Movies2021.PNG)
+
+- Frequency of each rating (i.e., 0.33% of content on IMDb has a 10 star rating:   
+![Image failed to display.](imgs/AverageRatings.PNG)
