@@ -1,8 +1,8 @@
 # IMDbMovies
-Takes various datasets provided by ['IMDb'](https://www.imdb.com/interfaces/) and imports them into SQL tables, performing a series of queries on them regarding movies and ratings.
+Takes various datasets provided by [IMDb](https://www.imdb.com/interfaces/) and imports them into SQL tables, performing a series of queries on them regarding movies and ratings.
 
 ### How To Use
-Please download the following tsv files from ['IMDb'](https://www.imdb.com/interfaces/):
+Please download the following tsv files from [IMDb](https://www.imdb.com/interfaces/):
 - title.basics.tsv.gz
 - title.ratings.tsv.gz
 
